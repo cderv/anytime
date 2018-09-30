@@ -5,14 +5,14 @@
 
 \section{Changes in anytime version 0.3.2 (2018-xx-yy)}{
   \itemize{
-    \item A new vignette introducing the \pkg{anytime} package was
-    added.
-    \item Some more tests for \code{anydate} were added along with so
+    \item A new (and of yet still incomplete) vignette introducing the
+    \pkg{anytime} package was added.
+    \item Some more tests for \code{anydate} were added along with some
     code coverage tags.
     \item The C++ code was robustified in two places to not trigger
     \code{rchk} warnings (\ghpr{79}).
     \item Three unit test files which fail on Solaris are now skipping
-    this os as we cannot reproduce or test on this OS (\ghpr{80}).
+    this OS as we cannot reproduce or test on this OS (\ghpr{80}).
   }
 }
 
