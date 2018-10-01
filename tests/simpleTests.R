@@ -1,4 +1,5 @@
 
+isNotWindows <- Sys.info()[["sysname"]] != "Windows"
 isSolaris <- Sys.info()[["sysname"]] == "SunOS"
 
 ## We turn off tests on Solaris with some regret, yet firmly, as the
@@ -40,7 +41,7 @@ if (!isSolaris) {
 
     ## Datetime: ISO with/without fractional seconds
     refPt <- format(as.POSIXct(c("2016-01-01 10:11:12", "2016-01-01 10:11:12.345678"),
-                               "%Y-%m-%d %H:%M:%0S"))
+                               "%Y-%m-%d %H:%M:%OS"))
     stopifnot(refPt == anytime(c("2016-01-01 10:11:12", "2016-01-01 10:11:12.345678")))
 
     ## Datetime: ISO alternate (?) with 'T' separator
@@ -49,7 +50,9 @@ if (!isSolaris) {
 
     ## Datetime: textual month formats
     ref3 <- rep(as.POSIXct("2016-09-01 10:11:12"), 3)
-    stopifnot(ref3 == anytime(c("2016-Sep-01 10:11:12", "Sep/01/2016 10:11:12", "Sep-01-2016 10:11:12")))
+    stopifnot(ref3 == anytime(c("2016-Sep-01 10:11:12",
+                                "Sep/01/2016 10:11:12",
+                                "Sep-01-2016 10:11:12")))
 
     ## Datetime: Mixed format (cf http://stackoverflow.com/questions/39259184)
     stopifnot(refPt == anytime(c("Thu Jan 01 10:11:12 2016", "Thu Jan 01 10:11:12.345678 2016")))
@@ -92,6 +95,6 @@ if (!isSolaris) {
     stopifnot(yyyymmdd(refD) == format(refD, "%Y%m%d"))
 
     ## Date from POSIXct
-    stopifnot(anydate(refT) == as.Date(refT))
-    stopifnot(utcdate(refT) == as.Date(refT))
+    if (isNotWindows) stopifnot(anydate(refT) == as.Date(refT))
+    if (isNotWindows) stopifnot(utcdate(refT) == as.Date(refT))
 }

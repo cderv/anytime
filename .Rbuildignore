@@ -8,3 +8,6 @@
 ^LICENSE$
 ^.editorconfig$
 .*\.tar\.gz$
+^GPATH
+^GRTAGS
+^GTAGS

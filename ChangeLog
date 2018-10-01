@@ -1,3 +1,11 @@
+2018-09-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/anytime.cpp (ptToDouble): Also check max year value before
+	touching tm_isdst on Windows
+	* tests/gh_issue_78.R: Test possible Windows issue with large years
+	* tests/simpleTests.R: Correct one format string, condition two tests
+	out on Windows
+
 2018-09-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .travis.yml: Switch Travis CI to R 3.5 repo
